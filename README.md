@@ -1,1 +1,1 @@
-# f24wb00korrapati
+this is lab 10
