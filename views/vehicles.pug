@@ -1,0 +1,27 @@
+block content
+  // vehicles.pug
+
+doctype html
+html
+  head
+    title Search Results - Vehicles
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
+
+  body
+    h1 Search Results - Vehicles
+
+    //- Unbuffered server-side code to define search results
+    - let results = [
+        { vehicle_name: 'Sedan', vehicle_type: 'Car', max_speed: 120 },
+        { vehicle_name: 'Sport Bike', vehicle_type: 'Motorcycle', max_speed: 180 },
+        { vehicle_name: 'SUV', vehicle_type: 'Car', max_speed: 150 }
+      ];
+
+    //- Container for displaying the search results
+    div.container-fluid
+      div.row
+        each vehicle in results
+          div.col-sm-2
+            p Vehicle Name: #{vehicle.vehicle_name}
+            p Vehicle Type: #{vehicle.vehicle_type}
+            p Max Speed: #{vehicle.max_speed} km/h

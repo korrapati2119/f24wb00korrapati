@@ -1,41 +1,34 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+// Import necessary modules
+const express = require('express');
+const path = require('path');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// Create an instance of the express app
+const app = express();
 
-var app = express();
+// Set the port number
+const port = process.env.PORT || 3000;
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
+// Set the view engine to Pug
 app.set('view engine', 'pug');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+// Set the views directory to where your pug templates are stored
+app.set('views', path.join(__dirname, 'views'));
+
+// Serve static files (CSS, images, JavaScript) from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+// Route for the home page (or index page)
+app.get('/', (req, res) => {
+    res.send('Welcome to the Vehicle app!');
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+// Route for '/vehicles' to render the vehicles.pug template
+app.get('/vehicles', (req, res) => {
+    // Render 'vehicles.pug' and pass any data if necessary (for now, no extra data passed)
+    res.render('vehicles');
 });
 
-module.exports = app;
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
