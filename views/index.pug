@@ -1,12 +1,12 @@
 extends layout
 
-block content
+    block content
   h1= korrapati
   p Welcome to korrapati
   button(type="button", class="btn btn-secondary", onclick="boost()") press me
   div#boost add in extra
 
-  script 
+  script.
     let value = 0;
     let amt = 3;
 
@@ -15,4 +15,3 @@ block content
       value += amt;
       
       document.getElementById("boost").innerText = `Value boosted by ${value} by ${amt}`;
-    
