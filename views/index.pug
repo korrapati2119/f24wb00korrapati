@@ -3,4 +3,16 @@ extends layout
 block content
   h1= korrapati
   p Welcome to korrapati
-  button(type="button", class="btn btn-secondary") press me
+  button(type="button", class="btn btn-secondary",onclick="boost()") press me
+  div#boost add in extra
+
+  script 
+    let val = 0;
+    let amount = 11;
+
+    function boost(){
+      amount+= 1;
+      val+= amount;
+      document.getElementByID("boost").innerText = `Value boosted by ${val} by ${amount}`;
+    }
+
