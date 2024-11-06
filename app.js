@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var vehiclesRouter = require('./routes/vehicles'); // Import the vehicle router
 var gridRouter = require('./routes/grid');
+var pickRouter = require('./routes/pick');
 
 var app = express();
 // view engine setup
@@ -22,6 +23,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/vehicles', vehiclesRouter); // Add the route for vehicles
 app.use('/grid', gridRouter);
+app.use('/pick', pickRouter);
  
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
