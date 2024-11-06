@@ -11,5 +11,5 @@ html
         - let rand = Math.floor(Math.random() * image_names.length)
         img(src=`/images/${image_names[rand]}`, alt=`Item ${rand}`, height="300", width="300")
 - let imgSrc = `/images/${image_names[rand]}`
-p= imgSrc  // This will display the image path as text for debugging
+p= imgSrc 
 img(src=imgSrc, alt=`Item ${rand}`, height="300", width="300")
