@@ -3,8 +3,8 @@ var router = express.Router();
 
 router.get('/', (req, res) => {
   let query = req.query;
-  console.log(rows ${query.rows});
-  console.log(cols ${query.cols});
+  console.log(`rows ${query.rows}`);
+  console.log(`cols ${query.cols}`);
   res.render('grid', { title: "Grid Display", query: query });
 });
 
