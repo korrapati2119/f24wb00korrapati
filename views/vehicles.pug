@@ -1,27 +1,20 @@
-doctype html
-html
-  head
-    title Vehicles search results
-    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
-  body
-    h1 Vehicles search results
-  .container-fluid
-    .row
-      //- Hard-coded array of vehicle objects
-      - const results = [
-      -   { vehicle_name: 'Sedan', vehicle_type: 'Car', max_speed: 180 },
-      -   { vehicle_name: 'Sport Bike', vehicle_type: 'Motorcycle', max_speed: 220 },
-      -   { vehicle_name: 'SUV', vehicle_type: 'Car', max_speed: 160 }
-      - ]
+extends layout
 
-      //- Iterate over the results array
-      each item in results
-        .col-sm-2
-          .card.mb-3
-            .card-body
-              h5 #{item.vehicle_name}
-              p Type: #{item.vehicle_type}
-              p Max Speed: #{item.max_speed} km/h
+block content
+  h1 Search Results - Vehicles
 
-  //- Link to go back to index or another endpoint
-  a(href='/') Back to Home
+  //- Unbuffered code block to define the array of results
+  -
+    const results = [
+      { vehicle_name: 'Sedan', vehicle_type: 'Car', max_speed: 180 },
+      { vehicle_name: 'Sport Bike', vehicle_type: 'Motorcycle', max_speed: 220 },
+      { vehicle_name: 'SUV', vehicle_type: 'Car', max_speed: 160 }
+    ];
+
+  div.container-fluid
+    div.row
+      - for (const vehicle of results)
+        div.col-sm-2
+          p Vehicle Name: #{vehicle.vehicle_name}
+          p Vehicle Type: #{vehicle.vehicle_type}
+          p Max Speed: #{vehicle.max_speed} km/h
