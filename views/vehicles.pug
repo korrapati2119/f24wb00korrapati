@@ -1,27 +1,25 @@
+extends layout
+
 block content
-   h1 = Vehicles
-   p Vehicles page
-doctype html
-html
-  head
-    title Search Results - Vehicles
-    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
+  h1 Search Results - Vehicles
 
-  body
-    h1 Search Results - Vehicles
+  .container-fluid
+    .row
+      //- Hard-coded array of vehicle objects
+      - const results = [
+      -   { vehicle_name: 'Sedan', vehicle_type: 'Car', max_speed: 180 },
+      -   { vehicle_name: 'Sport Bike', vehicle_type: 'Motorcycle', max_speed: 220 },
+      -   { vehicle_name: 'SUV', vehicle_type: 'Car', max_speed: 160 }
+      - ]
 
-    //- Unbuffered server-side code to define search results
-    - let results = [
-        { vehicle_name: 'Sedan', vehicle_type: 'Car', max_speed: 120 },
-        { vehicle_name: 'Sport Bike', vehicle_type: 'Motorcycle', max_speed: 180 },
-        { vehicle_name: 'SUV', vehicle_type: 'Car', max_speed: 150 }
-      ];
+      //- Iterate over the results array
+      each item in results
+        .col-sm-2
+          .card.mb-3
+            .card-body
+              h5 #{item.vehicle_name}
+              p Type: #{item.vehicle_type}
+              p Max Speed: #{item.max_speed} km/h
 
-    //- Container for displaying the search results
-    div.container-fluid
-      div.row
-        each vehicle in results
-          div.col-sm-2
-            p Vehicle Name: #{vehicle.vehicle_name}
-            p Vehicle Type: #{vehicle.vehicle_type}
-            p Max Speed: #{vehicle.max_speed} km/h
+  //- Link to go back to index or another endpoint
+  a(href='/') Back to Home
