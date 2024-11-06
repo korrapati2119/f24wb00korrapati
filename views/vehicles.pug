@@ -10,6 +10,12 @@ html
       { vehicle_name: 'SUV', vehicle_type: 'Car', max_speed: 160 }
     ];
 
+each item, index in results
+          .col-sm-2
+            h2 #{item.vehicle_name}
+            p Car: #{item.vehicle_type} years
+            p Speed: #{item.max_speed}
+            button(class="buy-btn" data-index=index data-name=item.vehicle_name) Buy
 
   div.container-fluid
     div.row
@@ -19,7 +25,6 @@ html
           p Vehicle Type: #{vehicle.vehicle_type}
           p Max Speed: #{vehicle.max_speed} km/h
 
-    // Add a script to bind events for the buy buttons
     script.
       document.addEventListener('DOMContentLoaded', function() {
         const buyButtons = document.querySelectorAll('.buy-btn');
